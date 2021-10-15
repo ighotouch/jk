@@ -6,4 +6,4 @@ metadata:
 spec:
   containers:
   - name: jnlp-slave
-    image: openpolicyagent/opa
+    image: hashicorp/terraform
