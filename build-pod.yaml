@@ -5,5 +5,5 @@ metadata:
     component: ci
 spec:
   containers:
-  - name: jnlp-slave
+  - name: jenkins
     image: hashicorp/terraform
