@@ -1,5 +1,7 @@
 pipeline {
-    stage('terraform init'){
-        
+    stages {
+        stage('terraform init'){
+
+        }
     }
 }
