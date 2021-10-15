@@ -1,0 +1,5 @@
+pipeline {
+    stage('terraform init'){
+        
+    }
+}
