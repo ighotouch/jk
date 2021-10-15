@@ -1,9 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: myapp
   labels:
-    name: myapp
     component: ci
 spec:
   containers:
