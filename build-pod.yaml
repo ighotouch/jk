@@ -9,5 +9,3 @@ spec:
   containers:
   - name: jnlp-slave
     image: openpolicyagent/opa
-    ports:
-      - containerPort: <Port>
