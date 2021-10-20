@@ -11,6 +11,7 @@ pipeline {
                 script {
                     sh 'terraform init'
                     sh 'terraform plan --out tfplan.binary'
+                    sh 'terraform show -json tfplan.binary > tfplan.json'
                 }
             }
         }
