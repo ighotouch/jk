@@ -2,7 +2,7 @@ pipeline {
     agent {
         kubernetes {
             yamlFile 'build-pod.yaml'
-            defaultContainer 'default'
+            defaultContainer 'jenkins'
         }
     }
     stages {
