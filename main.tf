@@ -1,23 +1,24 @@
-provider "aws" {
-    region = "us-west-1"
+terraform {
+  required_providers {
+    docker = {
+      source = "kreuzwerker/docker"
+      version = "~> 2.13.0"
+    }
+  }
 }
-resource "aws_instance" "web" {
-  instance_type = "t2.micro"
-  ami = "ami-09b4b74c"
+
+provider "docker" {}
+
+resource "docker_image" "nginx" {
+  name         = "nginx:latest"
+  keep_locally = false
 }
-resource "aws_autoscaling_group" "my_asg" {
-  availability_zones        = ["us-west-1a"]
-  name                      = "my_asg"
-  max_size                  = 5
-  min_size                  = 1
-  health_check_grace_period = 300
-  health_check_type         = "ELB"
-  desired_capacity          = 4
-  force_delete              = true
-  launch_configuration      = "my_web_config"
-}
-resource "aws_launch_configuration" "my_web_config" {
-    name = "my_web_config"
-    image_id = "ami-09b4b74c"
-    instance_type = "t2.micro"
+
+resource "docker_container" "nginx" {
+  image = docker_image.nginx.latest
+  name  = "tutorial"
+  ports {
+    internal = 80
+    external = 8000
+  }
 }
