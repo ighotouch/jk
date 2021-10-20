@@ -1,36 +1,17 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: opa
+  name: static-web
   labels:
-    app: opa
+    component: ci
+    role: myrole
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: opa
-  template:
-    metadata:
-      labels:
-        app: opa
-      name: opa
-    spec:
-      containers:
-      - name: opa
-        image: openpolicyagent/opa:0.33.1
-        ports:
-        - name: http
-          containerPort: 8181
-        args:
-        - "run"
-        - "--ignore=.*"  # exclude hidden dirs created by Kubernetes
-        - "--server"
-      - name: terraform
-        image: 'hashicorp/terraform:light'
-        command:
-          - sleep
-          - '3600'
-        resources: {}
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-        imagePullPolicy: IfNotPresent
+  containers:
+  - name: jenkins
+    image: hashicorp/terraform
+    - name: web
+      image: nginx
+      ports:
+        - name: web
+          containerPort: 80
+          protocol: TCP
