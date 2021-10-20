@@ -16,7 +16,7 @@ spec:
       - "--ignore=.*"  # exclude hidden dirs created by Kubernetes
       - "--server"
     - name: terraform
-        image: 'hashicorp/terraform:light'
-        command:
-          - sleep
-          - '3600'
+      image: 'hashicorp/terraform:light'
+      command:
+        - sleep
+        - '3600'
