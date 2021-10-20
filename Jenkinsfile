@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('terraform init'){
             steps {
-                terraform show
+               sh terraform
             }
         }
     }
