@@ -3,12 +3,9 @@ kind: Pod
 metadata:
   name: static-web
   labels:
-    component: ci
     role: myrole
 spec:
   containers:
-  - name: jenkins
-    image: hashicorp/terraform
     - name: web
       image: nginx
       ports:
