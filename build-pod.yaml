@@ -6,9 +6,12 @@ metadata:
     role: myrole
 spec:
   containers:
-    - name: web
-      image: nginx
+    - name: opa
+      image: openpolicyagent/opa:0.33.1
       ports:
-        - name: web
-          containerPort: 80
-          protocol: TCP
+      - name: http
+        containerPort: 8181
+      args:
+      - "run"
+      - "--ignore=.*"  # exclude hidden dirs created by Kubernetes
+      - "--server"
