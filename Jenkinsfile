@@ -8,7 +8,9 @@ pipeline {
     stages {
         stage('terraform init'){
             steps {
-                opa
+                script {
+                    sh 'terraform init'
+                }
             }
         }
     }
