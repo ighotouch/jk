@@ -7,4 +7,4 @@ metadata:
 spec:
   containers:
     - name: web
-      image: hashicorp/terraform:latest
+      image: hashicorp/terraform
