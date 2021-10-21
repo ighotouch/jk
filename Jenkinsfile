@@ -10,6 +10,7 @@ pipeline {
             steps { 
                 withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'igho-aws-creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     sh '''
+                        terraform init
                         terraform plan
                     '''
                  }
