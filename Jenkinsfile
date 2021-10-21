@@ -21,9 +21,11 @@ pipeline {
         }
         stage('OPA'){
             steps {
-                  sh '''
-                    echo 'ddd'
-                '''
+                container('opa'){
+                    sh '''
+                        echo 'ddd'
+                    '''
+                }
             }
         }
     }
