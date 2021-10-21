@@ -22,9 +22,8 @@ pipeline {
         stage('OPA'){
             steps {
                   sh '''
-                    writeFile(file: 'tfplan.json', text: myVar)
-                    cat tfplan.json
-                  '''
+                    echo 'ddd'
+                '''
             }
         }
     }
