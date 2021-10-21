@@ -17,5 +17,18 @@ pipeline {
                  }
             }
         }
+        stage('OPA'){
+            agent {
+                kubernetes {
+                    yamlFile 'build-pod.yaml'
+                    defaultContainer 'opa'
+                }
+            }
+            steps {
+                sh '''
+                    opa
+                '''
+            }
+        }
     }
 }
