@@ -9,6 +9,7 @@ pipeline {
         stage('terraform init'){
             steps {
                 script {
+                    sh 'aws --version'
                     sh 'terraform init'
                     sh 'opa eval --format pretty --data terraform.rego --input tfplan.json "data.terraform.analysis.authz"'
                 }
