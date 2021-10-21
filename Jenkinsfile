@@ -1,4 +1,4 @@
-def myVar = {}
+def myVar = 'sssssssssssss'
 pipeline {
     agent {
         kubernetes {
@@ -14,7 +14,7 @@ pipeline {
                         terraform init
                         terraform plan --out tfplan.binary
                         terraform show -json tfplan.binary > tfplan.json
-                        myVar = readFile('tfplan.json').trim()
+                        myVar = 'testigggggggg'
                     '''
                  }
             }
