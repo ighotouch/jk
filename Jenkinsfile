@@ -24,7 +24,7 @@ pipeline {
                 container('opa'){
                     withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'igho-aws-creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                         sh '''
-                            echo "${myVar}" >> tfplan.json
+                            echo myVar >> tfplan.json
                             cat tfplan.json
                             opa eval --format pretty --data terraform.rego --input tfplan.json "data.terraform.analysis.authz"
                         '''
