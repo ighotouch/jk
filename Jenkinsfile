@@ -26,7 +26,6 @@ pipeline {
                         sh '''
                             writeFile(file: 'tfplan.json', text: myVar)
                             cat tfplan.json
-                            opa eval --format pretty --data terraform.rego --input tfplan.json "data.terraform.analysis.authz"
                         '''
                     }
                 }
