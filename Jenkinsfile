@@ -18,17 +18,13 @@ pipeline {
             }
         }
         stage('OPA'){
-            agent {
-                kubernetes {
-                    yamlFile 'build-pod.yaml'
-                    defaultContainer 'opa'
-                }
-            }
             steps {
-                withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'igho-aws-creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                    sh '''
-                        opa eval --format pretty --data terraform.rego --input tfplan.json "data.terraform.analysis.authz"
-                    '''
+                container('opa'){
+                    withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'igho-aws-creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                        sh '''
+                            opa eval --format pretty --data terraform.rego --input tfplan.json "data.terraform.analysis.authz"
+                        '''
+                    }
                 }
             }
         }
