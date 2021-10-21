@@ -2,7 +2,7 @@ pipeline {
     agent {
         kubernetes {
             yamlFile 'build-pod.yaml'
-            defaultContainer 'static-web'
+            defaultContainer 'terraform'
         }
     }
     stages {
