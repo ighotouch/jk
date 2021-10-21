@@ -1,3 +1,4 @@
+def myVar = {}
 pipeline {
     agent {
         kubernetes {
