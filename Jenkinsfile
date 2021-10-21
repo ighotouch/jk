@@ -21,10 +21,10 @@ pipeline {
         }
         stage('OPA'){
             steps {
-                sh '''
-                    writeFile(file: 'tfplan.json', text: myVar)
-                    cat tfplan.json
-                '''
+                script {
+                   writeFile(file: 'tfplan.json', text: myVar)
+                   sh "ls -l"
+               }
             }
         }
     }
