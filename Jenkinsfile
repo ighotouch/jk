@@ -32,7 +32,7 @@ pipeline {
                 }
                 withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'igho-aws-creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     sh '''
-                        opa eval --format pretty --data terraform.rego --input tfplan.json "data.terraform.analysis.authz"
+                        ./opa eval --format pretty --data terraform.rego --input tfplan.json "data.terraform.analysis.authz"
                     '''
                  }
                 
