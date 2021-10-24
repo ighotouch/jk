@@ -20,8 +20,8 @@ pipeline {
             }
         }
         stage('OPA'){
-            container('opa'){
-                steps {
+            steps {
+                container('postgres') {
                     script {
                        writeFile(file: 'tfplan.json', text: myVar)
                        sh "./opa"
