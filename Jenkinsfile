@@ -29,7 +29,6 @@ pipeline {
             steps {
                 script {
                    writeFile(file: 'tfplan.json', text: myVar)
-                   sh "ls -l"
                 }
             }
         }
