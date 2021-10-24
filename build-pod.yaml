@@ -11,6 +11,10 @@ spec:
       ports:
       - name: http
         containerPort: 8181
+      args:
+      - "run"
+      - "--ignore=.*"  # exclude hidden dirs created by Kubernetes
+      - "--server"
     - name: terraform
       image: 'hashicorp/terraform:light'
       command:
