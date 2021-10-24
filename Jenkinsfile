@@ -20,12 +20,6 @@ pipeline {
             }
         }
         stage('OPA'){
-            agent {
-                kubernetes {
-                    yamlFile 'build-pod.yaml'
-                    defaultContainer 'opa'
-                }
-            }
             steps {
                 script {
                    writeFile(file: 'tfplan.json', text: myVar)
