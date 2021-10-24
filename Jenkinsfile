@@ -24,7 +24,7 @@ pipeline {
                 container('opa') {
                     script {
                        writeFile(file: 'tfplan.json', text: myVar)
-                       sh "./opa"
+                       sh "ls"
                     }
                 }
             }
