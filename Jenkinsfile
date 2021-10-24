@@ -11,6 +11,7 @@ pipeline {
             steps { 
                 withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'igho-aws-creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     sh '''
+                        ls
                         terraform init
                         terraform plan --out tfplan.binary
                         terraform show -json tfplan.binary > tfplan.json
@@ -22,6 +23,9 @@ pipeline {
         stage('OPA'){
             steps {
                 container('opa') {
+                    sh '''
+                        ./opa
+                    '''
                     script {
                        writeFile(file: 'tfplan.json', text: myVar)
                        sh "ls"
